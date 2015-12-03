@@ -49,6 +49,8 @@ nnoremap d "_d
 vnoremap d "_d
 vnoremap p "_dP
 
+tnoremap <C-w> <C-\><C-n> 
+
 " what was that about sane defaults?
 set mouse=""
 
