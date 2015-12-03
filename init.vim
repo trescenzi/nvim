@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'shougo/neocomplcache'
+Plug 'pangloss/vim-javascript'
 Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 call plug#end()
@@ -19,9 +20,13 @@ let g:neocomplcache_enable_at_startup = 1
 " tab completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-let g:neomake_javascript_enabled_makers = ['jshint']
+" turn on jscs and jshint for neomake
+let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
+" run neomake on save and open
 au! BufWritePost * Neomake
 au! BufEnter * Neomake
+
+let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist'
 
 "identify .es6 as javascript
 au! BufEnter *.es6 set ft=javascript
@@ -38,6 +43,15 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+nmap <space> zz
+nnoremap d "_d
+vnoremap d "_d
+vnoremap p "_dP
+
+" what was that about sane defaults?
+set mouse=""
+
 
 if &term =~ '^xterm'
   " solid underscore
