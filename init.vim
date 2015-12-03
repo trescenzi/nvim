@@ -3,6 +3,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'shougo/neocomplcache'
 Plug 'benekastah/neomake'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 try
