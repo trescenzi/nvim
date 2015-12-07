@@ -26,7 +26,7 @@ let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
 au! BufWritePost * Neomake
 au! BufEnter * Neomake
 
-let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist'
+let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist\|image_results\|tmp'
 
 "identify .es6 as javascript
 au! BufEnter *.es6 set ft=javascript
@@ -53,7 +53,6 @@ tnoremap <C-w> <C-\><C-n>
 
 " what was that about sane defaults?
 set mouse=""
-
 
 if &term =~ '^xterm'
   " solid underscore
