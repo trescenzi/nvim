@@ -66,3 +66,7 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
