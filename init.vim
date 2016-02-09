@@ -33,6 +33,8 @@ au! BufEnter *.es6 set ft=javascript
 
 filetype plugin indent on
 
+autocmd Filetype gitcommit setlocal spell textwidth=80
+
 syntax on
 set background=dark
 colorscheme solarized
