@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 "Plug 'shougo/neocomplcache'
 Plug 'pangloss/vim-javascript'
@@ -38,7 +39,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=80
 
 syntax on
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme gruvbox
+let g:gruvbox_contrast = 'high'
 set nocompatible
 set t_Co=256
 set number
