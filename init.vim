@@ -1,10 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
-Plug 'shougo/neocomplcache'
+"Plug 'shougo/neocomplcache'
 Plug 'pangloss/vim-javascript'
 Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 try
@@ -16,7 +17,7 @@ catch
 endtry
 
 " neocomplecache
-let g:neocomplcache_enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 " tab completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
