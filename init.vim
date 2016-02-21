@@ -7,6 +7,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 try
