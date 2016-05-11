@@ -8,6 +8,14 @@ Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
+
+"Elixir
+  "syntax highlighting
+  Plug 'elixir-lang/vim-elixir'
+  "doc support
+  Plug 'thinca/vim-ref'
+  "cool stuff
+  Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 call plug#end()
 
 try
