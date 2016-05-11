@@ -8,6 +8,7 @@ Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
+Plug 'restore_view.vim'
 
 "Elixir
   "syntax highlighting
@@ -45,6 +46,8 @@ au! BufEnter *.es6 set ft=javascript
 filetype plugin indent on
 
 autocmd Filetype gitcommit setlocal spell textwidth=80
+
+set viewoptions=cursor,folds,slash,unix 
 
 syntax on
 set background=dark
