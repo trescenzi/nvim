@@ -11,6 +11,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'restore_view.vim'
 Plug 'posva/vim-vue'
 
+" ultisnips is needed for skeletons to work
+Plug 'SirVer/ultisnips'
+Plug 'pgilad/vim-skeletons'
+
 "Elixir
   "syntax highlighting
   Plug 'elixir-lang/vim-elixir'
@@ -62,6 +66,9 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+let skeletons#autoRegister=1
+let skeletons#skeletonsDir='~/.config/nvim/skeletons'
 
 nmap <space> zz
 nnoremap d "_d
