@@ -3,12 +3,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 "Plug 'shougo/neocomplcache'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
 Plug 'restore_view.vim'
+Plug 'posva/vim-vue'
 
 "Elixir
   "syntax highlighting
@@ -53,7 +54,7 @@ syntax on
 set background=dark
 "colorscheme solarized
 colorscheme gruvbox
-let g:gruvbox_contrast = 'high'
+let g:gruvbox_contrast_dark='soft'
 set nocompatible
 set t_Co=256
 set number
