@@ -8,7 +8,6 @@ Plug 'benekastah/neomake'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
-Plug 'restore_view.vim'
 Plug 'posva/vim-vue'
 
 " ultisnips is needed for skeletons to work
