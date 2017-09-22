@@ -11,8 +11,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 
 " ultisnips is needed for skeletons to work
-Plug 'SirVer/ultisnips'
-Plug 'pgilad/vim-skeletons'
+" utilisnips seems to be broken with tab completion in deoplete
+" https://github.com/SirVer/ultisnips/issues/742
+"Plug 'SirVer/ultisnips'
+"Plug 'pgilad/vim-skeletons'
 
 "Elixir
   "syntax highlighting
