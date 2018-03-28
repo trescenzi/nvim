@@ -2,10 +2,11 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
 "Plug 'shougo/neocomplcache'
 Plug 'othree/yajs.vim'
 Plug 'benekastah/neomake'
-Plug 'rust-lang/rust.vim'
+"Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
@@ -18,11 +19,14 @@ Plug 'posva/vim-vue'
 
 "Elixir
   "syntax highlighting
-  Plug 'elixir-lang/vim-elixir'
+"  Plug 'elixir-lang/vim-elixir'
   "doc support
-  Plug 'thinca/vim-ref'
+"  Plug 'thinca/vim-ref'
   "cool stuff
-  Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+"  Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+
+Plug 'elmcast/elm-vim'
+Plug 'jparise/vim-graphql'
 call plug#end()
 
 try
@@ -53,7 +57,16 @@ filetype plugin indent on
 
 autocmd Filetype gitcommit setlocal spell textwidth=80
 
+set textwidth=80
+
 set viewoptions=cursor,folds,slash,unix 
+
+let g:netrw_preview=1
+let g:netrw_liststyle=3
+let g:netrw_browse_split=2
+let g:netrw_banner=0
+let g:netrw_winsize=10
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 syntax on
 set background=dark
@@ -67,6 +80,8 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+autocmd FileType elm setlocal shiftwidth=4 tabstop=4
 
 let skeletons#autoRegister=1
 let skeletons#skeletonsDir='~/.config/nvim/skeletons'
