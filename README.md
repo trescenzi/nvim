@@ -31,8 +31,9 @@ Mappings to these commands are:
 - `Tt`: display the type of the symbol under the cursor in the status bar
 - `Tr`: show refs of the symbol under the cursor
 
-Note while well meaning Tern doesn't always get everything right. `vim-vinegar`
-+ `grep` + `ctrlp` solve most symbol searching problems.
+Note while well meaning Tern doesn't always get everything right. `vim-vinegar` + `grep` + `ctrlp` solve most symbol searching problems.
+Also `T` is remapped but to be honest it's not really useful so I figured paving
+over it was fine.
 
 ## Remaps
 
