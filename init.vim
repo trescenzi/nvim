@@ -1,29 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
-"Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
-"Plug 'shougo/neocomplcache'
-Plug 'othree/yajs.vim'
-Plug 'benekastah/neomake'
-"Plug 'rust-lang/rust.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim'
-Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
-
-" ultisnips is needed for skeletons to work
-" utilisnips seems to be broken with tab completion in deoplete
-" https://github.com/SirVer/ultisnips/issues/742
-"Plug 'SirVer/ultisnips'
-"Plug 'pgilad/vim-skeletons'
-
-"Elixir
-  "syntax highlighting
-"  Plug 'elixir-lang/vim-elixir'
-  "doc support
-"  Plug 'thinca/vim-ref'
-  "cool stuff
-"  Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 
 Plug 'elmcast/elm-vim'
 Plug 'jparise/vim-graphql'
@@ -41,12 +23,8 @@ endtry
 let g:deoplete#enable_at_startup = 1
 " tab completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" turn on jscs and jshint for neomake
-let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
-" run neomake on save and open
-au! BufWritePost * Neomake
-au! BufEnter * Neomake
+" tern deoplete show docs
+let g:deoplete#sources#ternjs#types = 1
 
 let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist\|image_results\|tmp\|gemini\|gemini_report'
 
@@ -59,20 +37,16 @@ autocmd Filetype gitcommit setlocal spell textwidth=80
 
 set textwidth=80
 
-set viewoptions=cursor,folds,slash,unix 
+set viewoptions=cursor,folds,slash,unix
 
 let g:netrw_preview=1
 let g:netrw_liststyle=3
-let g:netrw_browse_split=2
-let g:netrw_banner=0
-let g:netrw_winsize=10
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 syntax on
 set background=dark
-"colorscheme solarized
 colorscheme gruvbox
-let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='hard'
 set nocompatible
 set t_Co=256
 set number
@@ -83,15 +57,12 @@ set expandtab
 
 autocmd FileType elm setlocal shiftwidth=4 tabstop=4
 
-let skeletons#autoRegister=1
-let skeletons#skeletonsDir='~/.config/nvim/skeletons'
-
 nmap <space> zz
 nnoremap d "_d
 vnoremap d "_d
 vnoremap p "_dP
 
-tnoremap <C-w> <C-\><C-n> 
+tnoremap <C-w> <C-\><C-n>
 
 " what was that about sane defaults?
 set mouse=""
