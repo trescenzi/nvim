@@ -39,7 +39,7 @@ Note while well meaning Tern doesn't always get everything right. `vim-vinegar`
 - normal mode:
   - `<space>` -> zz: Hitting `<space>` will center the screen
   - `d` doesn't load the paste register. Use `x` to cut.
-  - '-' opens `netrw`. This comes from `vim-vinegar`
+  - `-` opens `netrw`. This comes from `vim-vinegar`
 - terminal mode:
   - `<C-w>`(Ctrl + w) -> leave terminal insert mode
 
