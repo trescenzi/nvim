@@ -3,8 +3,9 @@ Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'pangloss/vim-javascript'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim'
 Plug 'posva/vim-vue'
 
 Plug 'elmcast/elm-vim'
@@ -25,6 +26,17 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " tern deoplete show docs
 let g:deoplete#sources#ternjs#types = 1
+" tern use global tern
+let g:tern#command = ['tern']
+
+" tern mappings
+" Tg -> open preview of definition of symbol
+nnoremap Tg :TernDefPreview<CR>
+" Tt -> show type of symbol
+nnoremap Tt :TernType<CR>
+" Tr -> show all refs of symbol
+nnoremap Tr :TernRefs<CR>
+
 
 let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist\|image_results\|tmp\|gemini\|gemini_report'
 
