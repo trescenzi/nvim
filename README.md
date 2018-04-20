@@ -20,7 +20,7 @@ hidden if not desired.
 ## Tern
 
 Tern provides the ability for deoplete to show symbol definitions and provide
-typeahead of symbols. This is provided seamlessly when typing. An exaple config
+typeahead of symbols. This is provided seamlessly when typing. An example config
 is included in this project. Place it in `~` for use.
 
 Tern also provides the ability to jump from symbol to symbol definition, show
