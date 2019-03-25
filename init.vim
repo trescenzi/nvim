@@ -1,28 +1,28 @@
 call plug#begin('~/.config/nvim/plugged')
+" Pretty Colors
 Plug 'morhetz/gruvbox'
-"Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nannery/neovim-fuzzy'
-Plug 'tpope/vim-vinegar'
-Plug 'pangloss/vim-javascript'
-Plug 'Shougo/deoplete.nvim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-"Plug 'lifepillar/vim-mucomplete'
-Plug 'ternjs/tern_for_vim'
-Plug 'craigemery/vim-autotag'
-Plug 'w0rp/ale'
-Plug 'rizzatti/dash.vim'
 
+" Fuzzy Completion via FZY
+Plug 'nannery/neovim-fuzzy'
+
+" Completion + Language Server
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" Syntax Plugins
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'
 "Plug 'posva/vim-vue'
 "Plug 'elmcast/elm-vim'
-Plug 'jparise/vim-graphql'
 
-Plug 'dhruvasagar/vim-table-mode'
-
-Plug 'leafgarland/typescript-vim'
-Plug 'hashivim/vim-terraform'
-
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
+" Extensions
+  " File Tree
+  Plug 'tpope/vim-vinegar'
+  " Note Taking
+  Plug 'xolox/vim-notes'
+  Plug 'xolox/vim-misc'
+  Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 try
@@ -33,31 +33,7 @@ try
 catch
 endtry
 
-" neocomplecache
-let g:deoplete#enable_at_startup = 1
-" tab completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" tern deoplete show docs
-let g:deoplete#sources#ternjs#types = 1
-" tern use global tern
-let g:tern#command = ['tern']
-
-" mucomplete
-"set completeopt+=menuone
-"autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-" tern mappings
-" Tg -> open preview of definition of symbol
-nnoremap Tg :TernDefPreview<CR>
-" Tt -> show type of symbol
-nnoremap Tt :TernType<CR>
-" Tr -> show all refs of symbol
-nnoremap Tr :TernRefs<CR>
-
-
-"let g:ctrlp_custom_ignore = 'X86*\|bower_components\|node_modules\|\.git\|docs\|build\|dist\|image_results\|tmp\|gemini\|gemini_report\|tags'
+" Fuzzy settings ctrl + p; ctrl + g
 let g:ignore_list = 'yarn.lock\|bower_components\|node_modules\|\.git\|docs\|build\|dist\|image_results\|tmp\|gemini\|gemini_report\|tags'
 nnoremap <C-p> :FuzzyOpen<CR>
 nnoremap <C-g> :FuzzyGrep<CR>
@@ -71,8 +47,6 @@ filetype plugin indent on
 autocmd Filetype gitcommit setlocal spell textwidth=80
 autocmd Filetype md setlocal spell textwidth=0
 autocmd Filetype txt setlocal spell textwidth=0
-
-:nmap <silent> <leader>d <Plug>DashSearch
 
 " MD compatible tables
 let g:table_mode_corner='|:'
@@ -132,11 +106,16 @@ fun! ImportToRequire()
   %s/\vimport(.*)from (.*);/const\1= require(\2);
 endfun
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\}
-
 " Notes options
+" Save as txt to dropbox + keybase
 let g:notes_suffix='.txt'
 let g:notes_directories = ['~/Dropbox/notes', '~/Library/Application Support/Keybase/Keybase/private/trescenzi/notes']
+
+" coc options
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+set updatetime=300
+set cmdheight=2
+
