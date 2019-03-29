@@ -13,6 +13,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
+Plug 'elixir-editors/vim-elixir'
 "Plug 'posva/vim-vue'
 "Plug 'elmcast/elm-vim'
 
