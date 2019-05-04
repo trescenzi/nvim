@@ -12,6 +12,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'hashivim/vim-terraform'
+Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
 Plug 'elixir-editors/vim-elixir'
 "Plug 'posva/vim-vue'
@@ -110,7 +111,7 @@ endfun
 " Notes options
 " Save as txt to dropbox + keybase
 let g:notes_suffix='.txt'
-let g:notes_directories = ['~/Dropbox/notes', '~/Library/Application Support/Keybase/Keybase/private/trescenzi/notes']
+let g:notes_directories = ['~/.notes', '~/Dropbox/notes', '~/Library/Application Support/Keybase/Keybase/private/trescenzi/notes']
 
 " coc options
 nmap <silent> gd <Plug>(coc-definition)
