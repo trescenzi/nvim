@@ -1,39 +1,65 @@
-# Javascript NeoVim Config
+# NeoVim Config
 
-This is the NeoVim config I use for javascript development. It's intended to
-provide a few nice to haves when working with javascript. Tern is included as
-something that adds some more powerful features if desired. It's very well
-hidden if not desired.
+This neovim config is intended to be rather lightweight while still providing
+all of the modern flexibility one expects out of an editor. Using this config +
+[alacritty](https://github.com/jwilm/alacritty) I see 0 slowdowns.
+
 
 ## Plugins
-- Colorscheme: [gruvbox](https://github.com/morhetz/gruvbox)
-- Fuzzy Search: [ctrlp](https://github.com/kien/ctrlp.vim)
+- Colorscheme(s): 
+  - [gruvbox](https://github.com/morhetz/gruvbox)
+  - [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+- Fuzzy Search: [fzf](https://github.com/junegunn/fzf.vim)
+  - This requires you have fzf + rg installed on your system.
 - Simple File Tree Helper: [vim-vinegar](https://github.com/tpope/vim-vinegar)
-- Enhanced JS Highlighting: [vim-javascript](https://github.com/pangloss/vim-javascript)
-- Typeahead(with <TAB> key setup): [deoplete](https://github.com/Shougo/deoplete.nvim)
-  - Symbol specific typeahead(with type descriptions): [deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
-- Symbol file jumping: [ternjs-vim](https://github.com/ternjs/tern_for_vim)
-- Vue file support: [vim-vue](https://github.com/posva/vim-vue)
-- Elm support: [vim-elm](https://github.com/ElmCast/elm-vim)
-- GraphQL Syntax Highlighting: [vim-graphql](https://github.com/jparise/vim-graphql)
+- Typeahead and Language Server: [coc](https://github.com/neoclide/coc.nvim)
+- Syntax support
+  - Basically everything: [vim-polyglot]()
+  - Enhanced JS Highlighting: [vim-javascript](https://github.com/pangloss/vim-javascript)
+- Status Line: [lightline.vim](https://github.com/itchyny/lightline.vim)
 
-## Tern
+## CoC
 
-Tern provides the ability for deoplete to show symbol definitions and provide
-typeahead of symbols. This is provided seamlessly when typing. An example config
-is included in this project. Place it in `~` for use.
+CoC provides language server support. This includes:
+- Typeahead
+- Symbol based file jumping and renaming
+- Suggestions and documentation for functions while typing
 
-Tern also provides the ability to jump from symbol to symbol definition, show
-the current symbol's type, and list out where the current symbol is being used.
-Mappings to these commands are:
+In order for CoC to work for languages you're working with you need to install
+the language server or CoC extension that supports that language. You can find
+all extensions [here](https://github.com/neoclide/coc.nvim#extensions). The
+extensions I use for web development are:
+- coc-json
+- coc-html
+- coc-css
+- coc-tsserver
 
-- `Tg`: open the file where the symbol under the cursor is defined
-- `Tt`: display the type of the symbol under the cursor in the status bar
-- `Tr`: show refs of the symbol under the cursor
+To install all of these use: `:CocInstall coc-json coc-html coc-css coc-tsserver`
 
-Note while well meaning Tern doesn't always get everything right. `vim-vinegar` + `grep` + `ctrlp` solve most symbol searching problems.
-Also `T` is remapped but to be honest it's not really useful so I figured paving
-over it was fine.
+### Normal Mode Commands
+- `gd`: Jump to a symbol's definition
+- `gy`: Jump to a symbol's type definition
+- `gi`: Jump to a symbol's implementation
+- `gr`: Show a symbol's references
+- `rn`: Rename a symbol
+
+## FZY
+
+Fuzzy searching is powered by [FZF](https://github.com/junegunn/fzf). I use FZF
++ [ripgrep](https://github.com/BurntSushi/ripgrep) for a super fast fuzzy
+searching solution. They require a little more setup than just `ctrl+p` but it's
+worth it. Check out
+[How FZF and ripgrep improved my workflow](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861)
+to learn how to install them and more about why they are so great even outside
+of vim.
+
+[fzf.vim](https://github.com/junegunn/fzf.vim) adds a light wrapper around fzf's
+commands. I've mapped some of the more used commands in normal mode to avoid
+typing the commands.
+
+- `ctrl+p` -> `:FZF`: fuzzy file searching
+- `ctrl+g` -> `:Rg`: fuzzy full text(within file) searching
+- `ctrl+b` -> `:Buffer`: fuzzy buffer searching
 
 ## Remaps
 
