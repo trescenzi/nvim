@@ -46,13 +46,9 @@ In order to work with different language servers you have to install them as spe
 
 ## Fuzzy Searching
 
-Fuzzy searching is powered by [FZF](https://github.com/junegunn/fzf). I use FZF
-+ [ripgrep](https://github.com/BurntSushi/ripgrep) for a super fast fuzzy
-searching solution. They require a little more setup than just `ctrl+p` but it's
-worth it. Check out
-[How FZF and ripgrep improved my workflow](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861)
-to learn how to install them and more about why they are so great even outside
-of vim.
+Fuzzy searching is powered by [FZF](https://github.com/junegunn/fzf). I use FZF & [ripgrep](https://github.com/BurntSushi/ripgrep) for a super fast fuzzy
+searching solution. They require a little more setup than just `ctrl+p` but it's worth it. Check out
+[How FZF and ripgrep improved my workflow](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861) to learn how to install them and more about why they are so great even outside of vim.
 
 floaterm adds a light wrapper around fzf & ripgrep commands. I've mapped some of the more used commands in normal mode to avoid
 typing the commands. It also works well with broot for finding files in a tree structure.
