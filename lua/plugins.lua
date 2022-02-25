@@ -19,18 +19,21 @@ local paq=require "paq"
 paq({
   "savq/paq-nvim";
   "nvim-lua/plenary.nvim";
-  "sainnhe/everforest";
   "voldikss/vim-floaterm";
   "neovim/nvim-lspconfig";
   {"ms-jpq/coq_nvim", branch="coq"};
   "nvim-treesitter/nvim-treesitter";
+  "sainnhe/gruvbox-material";
 })
 
 if should_install then
   print('Installing plugins')
   paq.install()
 else
-  vim.cmd('colorscheme everforest');
+  vim.g.gruvbox_material_enable_italic=1
+  vim.g.gruvbox_material_palette='material'
+  vim.g.background=os.getenv('term_background') or 'dark'
+  vim.cmd('colorscheme gruvbox-material');
   require('disable_defaults')
   require('lsp')
   require('treesitter')
