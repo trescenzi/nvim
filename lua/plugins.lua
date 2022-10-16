@@ -1,19 +1,3 @@
--- clone paq if not installed
-local path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-local should_install = false
-if vim.fn.empty(vim.fn.glob(path)) > 0 then
-  print('Installing paq-nvim')
-  vim.fn.system {
-    'git',
-    'clone',
-    '--depth=1',
-    'https://github.com/savq/paq-nvim.git',
-    path
-  }
-  should_install=true
-  vim.cmd('packadd paq-nvim')
-end
-
 local paq=require "paq" 
 
 paq({
@@ -23,19 +7,36 @@ paq({
   "neovim/nvim-lspconfig";
   {"ms-jpq/coq_nvim", branch="coq"};
   "nvim-treesitter/nvim-treesitter";
-  "sainnhe/gruvbox-material";
+  "sainnhe/everforest";
+  "rebelot/kanagawa.nvim";
+  "Olical/conjure";
+  'Olical/aniseed';
+  'tomlion/vim-solidity';
+  'jparise/vim-graphql';
+  'sam4llis/nvim-tundra';
+  'tpope/vim-repeat';
+  'ggandor/leap.nvim';
 })
 
-if should_install then
-  print('Installing plugins')
-  paq.install()
-else
-  vim.g.gruvbox_material_enable_italic=1
-  vim.g.gruvbox_material_palette='material'
-  vim.g.background=os.getenv('term_background') or 'dark'
-  vim.cmd('colorscheme gruvbox-material');
+function setupPlugins()
+  -- needs to be called before we try to require coq
+  vim.g.coq_settings={auto_start='shut-up'}
+  vim.g.everforest_material_enable_italic=1
+  vim.g.everforest_background='soft'
+  vim.opt.background=os.getenv('term_background') or 'dark'
+  vim.cmd('colorscheme everforest');
   require('disable_defaults')
   require('lsp')
   require('treesitter')
   require('floaterm')
+  require('leap').set_default_keymaps()
+end
+
+if bootstrapped then
+  print('Installing plugins')
+  paq.install()
+  vim.cmd('autocmd User PaqDoneInstall lua setupPlugins()')
+  print('Bootstrapped and installed plugins')
+else
+  setupPlugins()
 end

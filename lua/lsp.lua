@@ -1,5 +1,12 @@
 local nvim_lsp = require('lspconfig')
 
+-- Add coq and if we just bootstrapped install its deps
+local coq = require('coq')
+if bootstrapped then
+  coq.deps()
+  vim.cmd('autocmd User COQDonedeps lua print "done deps"')
+end
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -58,16 +65,31 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- and map buffer local keybindings when the language server attaches
 -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for
 -- install instructions per language server
-local servers = {  "pyright", "cssls", "svelte", "jsonls", "rust_analyzer", "gopls", "tsserver", "julials", "zls" }
+local servers = {  "pyright", "cssls", "svelte", "jsonls", "rust_analyzer", "gopls", "julials", "zls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
--- haven't figured out a good way to deal with deno+ts yet.
+local jsServer
+
+if vim.fs.dirname(vim.fs.find({'package.json'}, {
+  upward = true,
+  limit = 1,
+  type = 'file',
+  stop = vim.fs.dirname(vim.loop.cwd())
+})[1]) ~= nil then
+  jsServer = 'tsserver'
+else 
+  jsServer = 'denols' 
+end
+
+nvim_lsp[jsServer].setup {
+  on_attach = on_attach
+}
+
 --nvim_lsp['denols'].setup {
  -- on_attach = on_attach,
   -- package.json sometimes aren't actually at the root especially for monorepos
   --root_dir = lspconfig.util.root_pattern(".git"),
-  --autostart = false
 -- }
 -- vim.lsp.set_log_level("debug")

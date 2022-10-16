@@ -10,9 +10,9 @@ function vnmap(s, c)
 end
 
 -- stop coloring past 100 characters
-vim.opt.synmaxcol=100
+-- vim.opt.synmaxcol=100
 -- max line length is 80
-vim.opt.textwidth=80
+-- vim.opt.textwidth=80
 
 -- setup deep undo
 vim.opt.undodir=vim.fn.stdpath('data') .. '/undodir'
@@ -53,7 +53,5 @@ vnmap("p", '"_P')
 -- disable mouse
 vim.opt.mouse=""
 
--- needs to be called before we try to require coq
-vim.g.coq_settings={auto_start='shut-up'}
-
+require('find')
 require('plugins')
