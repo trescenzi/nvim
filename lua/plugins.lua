@@ -8,14 +8,16 @@ paq({
   {"ms-jpq/coq_nvim", branch="coq"};
   "nvim-treesitter/nvim-treesitter";
   "sainnhe/everforest";
-  "rebelot/kanagawa.nvim";
-  "Olical/conjure";
-  'Olical/aniseed';
-  'tomlion/vim-solidity';
-  'jparise/vim-graphql';
-  'sam4llis/nvim-tundra';
   'tpope/vim-repeat';
   'ggandor/leap.nvim';
+  'f-person/git-blame.nvim';
+
+  'tomlion/vim-solidity';
+  'jparise/vim-graphql';
+
+  -- "rebelot/kanagawa.nvim";
+  -- "Olical/conjure";
+  -- 'Olical/aniseed';
 })
 
 function setupPlugins()
@@ -30,6 +32,7 @@ function setupPlugins()
   require('treesitter')
   require('floaterm')
   require('leap').set_default_keymaps()
+  require('git-blame')
 end
 
 if bootstrapped then
