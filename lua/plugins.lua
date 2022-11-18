@@ -10,11 +10,10 @@ paq({
   "sainnhe/everforest";
   "Olical/conjure";
   'Olical/aniseed';
-  'tomlion/vim-solidity';
-  'jparise/vim-graphql';
-  'sam4llis/nvim-tundra';
-  'tpope/vim-repeat';
   'catppuccin/nvim';
+  "tomlion/vim-solidity";
+  "jparise/vim-graphql";
+  "f-person/git-blame.nvim";
 })
 
 function setupPlugins()
@@ -51,11 +50,12 @@ function setupPlugins()
     }
   });
   vim.cmd('colorscheme catppuccin');
+  vim.g.gitblame_enabled=0;
+  nnmap("<Leader>b", ":GitBlameToggle<CR>");
   require('disable_defaults')
   require('lsp')
   require('treesitter')
   require('floaterm')
-  require('leap').set_default_keymaps()
 end
 
 if bootstrapped then
