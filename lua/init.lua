@@ -53,5 +53,4 @@ vnmap("p", '"_P')
 -- disable mouse
 vim.opt.mouse=""
 
-require('find')
 require('plugins')
