@@ -65,10 +65,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- and map buffer local keybindings when the language server attaches
 -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md for
 -- install instructions per language server
-local servers = {  "pyright", "cssls", "svelte", "jsonls", "rust_analyzer", "gopls", "julials", "zls" }
+local servers = {  "pyright", "cssls", "svelte", "jsonls", "rust_analyzer", "gopls", "julials", "zls", "graphql" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+vim.lsp.set_log_level("debug")
 
 local jsServer
 

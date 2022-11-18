@@ -8,14 +8,11 @@ paq({
   {"ms-jpq/coq_nvim", branch="coq"};
   "nvim-treesitter/nvim-treesitter";
   "sainnhe/everforest";
-  "rebelot/kanagawa.nvim";
   "Olical/conjure";
   'Olical/aniseed';
-  'tomlion/vim-solidity';
-  'jparise/vim-graphql';
-  'sam4llis/nvim-tundra';
-  'tpope/vim-repeat';
-  'ggandor/leap.nvim';
+  "tomlion/vim-solidity";
+  "jparise/vim-graphql";
+  "f-person/git-blame.nvim";
 })
 
 function setupPlugins()
@@ -25,11 +22,12 @@ function setupPlugins()
   vim.g.everforest_background='soft'
   vim.opt.background=os.getenv('term_background') or 'dark'
   vim.cmd('colorscheme everforest');
+  vim.g.gitblame_enabled=0;
+  nnmap("<Leader>b", ":GitBlameToggle<CR>");
   require('disable_defaults')
   require('lsp')
   require('treesitter')
   require('floaterm')
-  require('leap').set_default_keymaps()
 end
 
 if bootstrapped then
