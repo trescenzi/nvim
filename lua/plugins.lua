@@ -14,6 +14,7 @@ paq({
   "tomlion/vim-solidity";
   "jparise/vim-graphql";
   "f-person/git-blame.nvim";
+  "ellisonleao/gruvbox.nvim";
 })
 
 function setupPlugins()
@@ -23,33 +24,7 @@ function setupPlugins()
   -- vim.g.everforest_background='soft'
   -- require('colors');
   vim.g.background=os.getenv('term_background') or 'dark'
-  require("catppuccin").setup({
-    -- latte, frappe, macchiato, mocha
-    flavour = "frappe",
-    background = {
-        light = "latte",
-        dark = "macchiato",
-    },
-    integrations = {
-      treesitter = true,
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
-        },
-        underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
-        },
-      },
-    }
-  });
-  vim.cmd('colorscheme catppuccin');
+  vim.cmd('colorscheme gruvbox');
   vim.g.gitblame_enabled=0;
   nnmap("<Leader>b", ":GitBlameToggle<CR>");
   require('disable_defaults')

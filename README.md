@@ -10,7 +10,7 @@ On the first run paq will be cloned and install packages. Stuff will complain
 and look a bit gross. Run `:COQdeps`, it'll shout at you to, then restart.
 
 - Colorscheme:
-  - [everforest](https://github.com/sainnhe/everforest)
+  - [gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
 - Terminal Popup: [floaterm](https://github.com/voldikss/vim-floaterm)
   - Provides fuzzy searching with fzf(files) and rg(full test)
     - This requires you have fzf + rg installed on your system.
