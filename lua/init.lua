@@ -53,4 +53,6 @@ vnmap("p", '"_P')
 -- disable mouse
 vim.opt.mouse=""
 
+vim.api.nvim_create_user_command('W', 'FormatWriteLock', {})
+
 require('plugins')

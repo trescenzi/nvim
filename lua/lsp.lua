@@ -70,7 +70,7 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("error")
 
 local jsServer
 
@@ -80,18 +80,20 @@ if vim.fs.dirname(vim.fs.find({'package.json'}, {
   type = 'file',
   stop = vim.fs.dirname(vim.loop.cwd())
 })[1]) ~= nil then
-  jsServer = 'tsserver'
+   jsServer = 'tsserver'
+  -- vtsls is the wrapper around the lsp that comes with vscode and is supposed to be faster
+   -- jsServer = 'vtsls'
 else 
   jsServer = 'denols' 
 end
 
 nvim_lsp[jsServer].setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern(".git"),
 }
 
 --nvim_lsp['denols'].setup {
  -- on_attach = on_attach,
   -- package.json sometimes aren't actually at the root especially for monorepos
-  --root_dir = lspconfig.util.root_pattern(".git"),
 -- }
--- vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")

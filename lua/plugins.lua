@@ -6,10 +6,12 @@ paq({
   "voldikss/vim-floaterm";
   "neovim/nvim-lspconfig";
   {"ms-jpq/coq_nvim", branch="coq"};
+  {'ms-jpq/coq.artifacts', branch="artifacts"};
   "nvim-treesitter/nvim-treesitter";
   "jparise/vim-graphql";
   "f-person/git-blame.nvim";
   "ellisonleao/gruvbox.nvim";
+  "mhartington/formatter.nvim";
   "Robitx/gp.nvim";
 })
 
@@ -18,11 +20,13 @@ function setupPlugins()
   vim.g.coq_settings={auto_start='shut-up'}
   require('colors');
   vim.g.background=os.getenv('term_background') or 'dark'
+  vim.g.gruvbox_contrast_dark='soft'
   vim.cmd('colorscheme gruvbox');
   vim.g.gitblame_enabled=0;
   nnmap("<Leader>b", ":GitBlameToggle<CR>");
   require('disable_defaults')
   require('lsp')
+  require('format')
   require('treesitter')
   require('floaterm')
   require('cgpt')
