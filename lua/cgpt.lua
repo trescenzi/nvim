@@ -34,7 +34,23 @@ require("gp").setup({
       gp.Prompt(params, gp.Target.enew, nil, gp.config.command_model,
           template, gp.config.command_system_prompt)
     end,
+
+    Regex = function(gp, params)
+      local template = "Write a regex which will match the following: "
+          .. "{{selection}}"
+          .. "Include an explination for the regex. Do not include any other code beyond the regex string."
+      gp.Prompt(params, gp.Target.append, nil, gp.config.command_model,
+          template, "You are an AI assistant that writes regexes and explains them but doesn't know any programming languages")
+    end,
+
+    FourChat = function(gp, params)
+      gp.Prompt(params, gp.Target.append, nil, gp.config.command_model,
+          "{{selection}}", gp.config.chat_system_prompt)
+    end,
 	},
 })
 
 vim.keymap.set("v", "<C-g>i", ":<C-u>'<,'>GpImplement<cr>")
+vim.keymap.set("v", "<C-g>u", ":<C-u>'<,'>GpJestTests<cr>")
+vim.keymap.set("v", "<C-g>r", ":<C-u>'<,'>GpRegex<cr>")
+vim.keymap.set("v", "<C-g>4", ":<C-u>'<,'>GpFourChat<cr>")
