@@ -10,6 +10,7 @@ paq({
   "jparise/vim-graphql";
   "f-person/git-blame.nvim";
   "ellisonleao/gruvbox.nvim";
+  "Robitx/gp.nvim";
 })
 
 function setupPlugins()
@@ -24,6 +25,7 @@ function setupPlugins()
   require('lsp')
   require('treesitter')
   require('floaterm')
+  require('cgpt')
 end
 
 if bootstrapped then
